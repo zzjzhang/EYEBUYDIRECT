@@ -61,13 +61,6 @@
                 <!-- <scope>runtime</scope> -->
             </dependency>
 
-            <!-- redis 驱动 -->
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>3.0.1</version>
-            </dependency>
-
             <!-- mybatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -122,7 +115,12 @@
 
     </dependencyManagement>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
