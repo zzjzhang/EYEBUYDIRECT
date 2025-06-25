@@ -1,13 +1,11 @@
 package com.zzj.cn.eyebuydirect.controller;
 
+import com.zzj.cn.eyebuydirect.entity.Book;
 import com.zzj.cn.eyebuydirect.service.BookCatalogService;
 import com.zzj.cn.eyebuydirect.vo.BookVo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,14 +22,14 @@ public class BookCatalogController {
         return bookCatalogService.query(catalog);
     }
 
-    @GetMapping("/update")
-    public void update() {
-        bookCatalogService.update();
+    @PostMapping("/update")
+    public void update(@RequestBody Book book) {
+        bookCatalogService.update(book);
     }
 
     @PostMapping("/create")
-    public void create() {
-        bookCatalogService.insert();
+    public void create(@RequestBody Book book) {
+        bookCatalogService.insert(book);
     }
 
     @GetMapping("/delete")
