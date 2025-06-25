@@ -61,7 +61,16 @@ public class BookCatalogDao {
     }
 
     public List<BookDto> query(String catalog) {
-        return new ArrayList<>();
+        if (catalog == null || catalog.length() == 0) {
+            return null;
+        }
+        List<BookDto> bookDtosResult = new ArrayList<>();
+        for (BookDto bookDto : bookDtos) {
+            if (bookDto.getCatalog().equals(catalog)) {
+                bookDtosResult.add(bookDto);
+            }
+        }
+        return bookDtosResult;
     }
 
     public void delete() {
