@@ -73,7 +73,7 @@ public class BookCatalogDao {
         return bookDtosResult;
     }
 
-    public void delete() {
+    public void delete(String name) {
 
     }
 

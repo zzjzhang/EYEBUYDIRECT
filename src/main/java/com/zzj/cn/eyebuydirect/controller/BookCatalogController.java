@@ -17,6 +17,12 @@ public class BookCatalogController {
     @Resource
     private BookCatalogService bookCatalogService;
 
+
+    @PostMapping("/create")
+    public void create(@RequestBody Book book) {
+        bookCatalogService.insert(book);
+    }
+
     @GetMapping("/query/{catalog}")
     public List<BookVo> query(@PathVariable("catalog") String catalog) {
         return bookCatalogService.query(catalog);
@@ -25,11 +31,6 @@ public class BookCatalogController {
     @PostMapping("/update")
     public void update(@RequestBody Book book) {
         bookCatalogService.update(book);
-    }
-
-    @PostMapping("/create")
-    public void create(@RequestBody Book book) {
-        bookCatalogService.insert(book);
     }
 
     @GetMapping("/delete")
