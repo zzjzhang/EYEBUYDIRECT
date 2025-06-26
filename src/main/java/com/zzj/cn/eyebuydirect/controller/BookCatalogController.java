@@ -4,22 +4,20 @@ import com.zzj.cn.eyebuydirect.enums.Action;
 import com.zzj.cn.eyebuydirect.request.BaseRequest;
 import com.zzj.cn.eyebuydirect.response.BaseResponse;
 import com.zzj.cn.eyebuydirect.service.HandlerRouter;
-import jakarta.annotation.Resource;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 
-@Controller
-@RequestMapping("/book-catalog")
+@RestController
+@RequestMapping("book-catalog")
 public class BookCatalogController {
 
     @Resource
     private HandlerRouter handlerRouter;
 
 
-    @PostMapping("/create")
+    @PostMapping("create")
     public BaseResponse create(@RequestBody BaseRequest baseRequest) {
         return handlerRouter.route(Action.CREATE, baseRequest);
     }
@@ -37,6 +35,12 @@ public class BookCatalogController {
     @PostMapping("/remove")
     public BaseResponse delete(@RequestBody BaseRequest baseRequest) {
         return handlerRouter.route(Action.REMOVE, baseRequest);
+    }
+
+
+    @GetMapping("heart-beat")
+    public BaseResponse heartBeat() {
+        return new BaseResponse();
     }
 
 }

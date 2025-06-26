@@ -4,8 +4,10 @@ import com.zzj.cn.eyebuydirect.dao.BookCatalogDao;
 import com.zzj.cn.eyebuydirect.enums.Action;
 import com.zzj.cn.eyebuydirect.request.BaseRequest;
 import com.zzj.cn.eyebuydirect.response.BaseResponse;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
 
 @Component
 public abstract class AbstractHandler {

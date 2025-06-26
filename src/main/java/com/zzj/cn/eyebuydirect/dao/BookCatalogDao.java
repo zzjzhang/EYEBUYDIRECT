@@ -1,9 +1,9 @@
 package com.zzj.cn.eyebuydirect.dao;
 
 import com.zzj.cn.eyebuydirect.dto.BookDto;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -68,6 +68,16 @@ public class BookCatalogDao {
 
     public void delete(String name) {
 
+    }
+
+
+
+    public List<BookDto> getBookDtos() {
+        return bookDtos;
+    }
+
+    public void setBookDtos(List<BookDto> bookDtos) {
+        this.bookDtos = bookDtos;
     }
 
 }

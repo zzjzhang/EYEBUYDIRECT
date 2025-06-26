@@ -5,10 +5,10 @@ import com.zzj.cn.eyebuydirect.dao.BookCatalogDao;
 import com.zzj.cn.eyebuydirect.dto.BookDto;
 import com.zzj.cn.eyebuydirect.entity.Book;
 import com.zzj.cn.eyebuydirect.vo.BookVo;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 
