@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Repository
@@ -53,8 +54,9 @@ public class BookCatalogDao {
         }
     }
 
-    public void insert() {
-
+    public void insert(BookDto bookDto) {
+        bookDto.setId(UUID.randomUUID().toString());
+        bookDtos.add(bookDto);
     }
 
     public void update() {
