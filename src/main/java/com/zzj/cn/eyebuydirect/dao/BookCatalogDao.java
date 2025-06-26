@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,15 +14,17 @@ import java.util.List;
 @Repository
 public class BookCatalogDao {
 
+    public static String BOOK_TABLE_PATH = "";
+
     private List<BookDto> bookDtos;
+
 
     @PostConstruct
     void init() {
-        URL bookTableFileUrl = BookCatalogDao.class.getResource("book_table.csv");
-        if (bookTableFileUrl.getPath() == null) {
-            throw new RuntimeException("File does not exist!");
+        if (BOOK_TABLE_PATH == null || BOOK_TABLE_PATH.length() == 0) {
+            throw new RuntimeException("Book table file does not exist!");
         }
-        File file = new File(bookTableFileUrl.getPath());
+        File file = new File(BOOK_TABLE_PATH);
         try {
             bookDtos = new ArrayList<>();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -77,4 +78,6 @@ public class BookCatalogDao {
 
     }
 
+    
+    
 }
