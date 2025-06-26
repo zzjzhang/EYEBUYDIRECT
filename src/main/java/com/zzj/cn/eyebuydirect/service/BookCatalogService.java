@@ -18,8 +18,8 @@ public class BookCatalogService {
     @Resource
     private BookCatalogDao bookCatalogDao;
 
-    public List<BookVo> query(String catalog) {
-        List<BookDto> bookDtos = bookCatalogDao.query(catalog);
+    public List<BookVo> query() {
+        List<BookDto> bookDtos = bookCatalogDao.query();
         if (CollectionUtils.isEmpty(bookDtos)) {
             return null;
         }
