@@ -1,53 +1,27 @@
 package com.zzj.cn.eyebuydirect.request;
 
-import com.zzj.cn.eyebuydirect.entity.Catalog;
 
+import com.zzj.cn.eyebuydirect.entity.Book;
 
 public class BaseRequest {
 
-    private String name;
-    private String author;
-    private String isbn;
-    private String publisher;
-    private Catalog catalogs;
+    private String requestId;
+    private Book book;
 
-    public String getName() {
-        return name;
+    public String getRequestId() {
+        return requestId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
-    public String getAuthor() {
-        return author;
+    public Book getBook() {
+        return book;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public Catalog getCatalogs() {
-        return catalogs;
-    }
-
-    public void setCatalogs(Catalog catalogs) {
-        this.catalogs = catalogs;
-    }
 }

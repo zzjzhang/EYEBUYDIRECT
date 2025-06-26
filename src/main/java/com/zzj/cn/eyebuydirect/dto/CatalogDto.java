@@ -1,8 +1,11 @@
-package com.zzj.cn.eyebuydirect.entity;
+package com.zzj.cn.eyebuydirect.dto;
+
+import com.zzj.cn.eyebuydirect.entity.Catalog;
 
 import java.util.List;
 
-public class Catalog {
+
+public class CatalogDto {
 
     private String id;
     private String name;

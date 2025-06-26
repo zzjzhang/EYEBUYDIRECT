@@ -1,7 +1,9 @@
 package com.zzj.cn.eyebuydirect.dao;
 
 import com.zzj.cn.eyebuydirect.dto.BookDto;
+import com.zzj.cn.eyebuydirect.dto.CatalogDto;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
@@ -12,16 +14,24 @@ import java.util.List;
 import java.util.UUID;
 
 
+
 @Repository
 public class BookCatalogDao {
 
     public static String BOOK_TABLE_PATH = "";
+    public static String CATALOG_TABLE_PATH = "";
 
     private List<BookDto> bookDtos;
+    private List<CatalogDto> catalogDtos;
 
 
     @PostConstruct
     void init() {
+        initBook();
+        initCatalog();
+    }
+
+    private void initBook() {
         if (BOOK_TABLE_PATH == null || BOOK_TABLE_PATH.length() == 0) {
             throw new RuntimeException("Book table file does not exist!");
         }
@@ -54,20 +64,49 @@ public class BookCatalogDao {
         }
     }
 
+    private void initCatalog() {
+    }
+
     public void insert(BookDto bookDto) {
         bookDto.setId(UUID.randomUUID().toString());
         bookDtos.add(bookDto);
     }
 
-    public void update() {
+    public void update(BookDto bookDto) {
+        if (bookDto == null) {
+            return;
+        }
+        for (BookDto existingBookDto : bookDtos) {
+            if (existingBookDto.getName().equals(bookDto.getName())) {
+                bookDto.setId(existingBookDto.getId());
+                bookDtos.remove(existingBookDto);
+                bookDtos.add(bookDto);
+            }
+        }
     }
 
-    public List<BookDto> query() {
-        return bookDtos;
+    public List<BookDto> query(String catalogName) {
+        if (StringUtils.isEmpty(catalogName)) {
+            return null;
+        }
+        List<BookDto> returnBookDtos = new ArrayList<>();
+        for (BookDto bookDto : bookDtos) {
+            if (bookDto.getCatalog().equals(catalogName)) {
+                returnBookDtos.add(bookDto);
+            }
+        }
+        return returnBookDtos;
     }
 
     public void delete(String name) {
-
+        if (StringUtils.isEmpty(name)) {
+            return;
+        }
+        for (BookDto bookDto : bookDtos) {
+            if (bookDto.getName().equals(name)) {
+                bookDtos.remove(bookDto);
+            }
+        }
     }
 
 

@@ -12,7 +12,7 @@ public class QueryHandler extends AbstractHandler {
 
     @Override
     public BaseResponse handle(BaseRequest baseRequest) {
-        super.bookCatalogDao.query();
+        super.bookCatalogDao.query(baseRequest.getBook().getCatalog().getName());
         return null;
     }
 

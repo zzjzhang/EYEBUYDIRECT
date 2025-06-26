@@ -1,14 +1,12 @@
 package com.zzj.cn.eyebuydirect.entity;
 
-import java.util.List;
-
 public class Book {
 
     private String name;
     private String author;
     private String isbn;
     private String publisher;
-    private List<Catalog> catalogs;
+    private Catalog catalog;
 
 
     public String getName() {
@@ -43,12 +41,12 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public List<Catalog> getCatalogs() {
-        return catalogs;
+    public Catalog getCatalog() {
+        return catalog;
     }
 
-    public void setCatalogs(List<Catalog> catalogs) {
-        this.catalogs = catalogs;
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
     }
 
 }
