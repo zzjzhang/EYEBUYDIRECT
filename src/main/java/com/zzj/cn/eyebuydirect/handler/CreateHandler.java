@@ -12,8 +12,13 @@ public class CreateHandler extends AbstractHandler {
 
     @Override
     public BaseResponse handle(BaseRequest baseRequest) {
-        super.bookCatalogDao.insert(BookConvertor.convert(baseRequest.getBook()));
-        return null;
+        try {
+            super.bookCatalogDao.insert(BookConvertor.convert(baseRequest.getBook()));
+            return BaseResponse.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return BaseResponse.fail(e.getMessage());
+        }
     }
 
     public Action getAction() {

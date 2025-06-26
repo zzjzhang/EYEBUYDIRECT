@@ -10,8 +10,13 @@ public class RemoveHandler extends AbstractHandler {
 
     @Override
     public BaseResponse handle(BaseRequest baseRequest) {
-        super.bookCatalogDao.delete(null);
-        return null;
+        try {
+            super.bookCatalogDao.delete(baseRequest.getBook().getName());
+            return BaseResponse.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return BaseResponse.fail(e.getMessage());
+        }
     }
 
     public Action getAction() {

@@ -10,13 +10,25 @@ public class BaseResponse<T> {
     private T responseEntity;
 
 
-    public BaseResponse success(T responseEntity) {
-        BaseResponse baseResponse = new BaseResponse();
+    public static <T> BaseResponse success() {
+        BaseResponse<T> baseResponse = new BaseResponse<>();
+        baseResponse.setStatus(Status.SUCCESS);
+        return baseResponse;
+    }
+
+    public static <T> BaseResponse success(T responseEntity) {
+        BaseResponse<T> baseResponse = new BaseResponse<>();
         baseResponse.setStatus(Status.SUCCESS);
         baseResponse.setResponseEntity(responseEntity);
         return baseResponse;
     }
 
+    public static BaseResponse fail(String message) {
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setStatus(Status.FAIL);
+        baseResponse.setMessage(message);
+        return baseResponse;
+    }
 
     public Status getStatus() {
         return status;

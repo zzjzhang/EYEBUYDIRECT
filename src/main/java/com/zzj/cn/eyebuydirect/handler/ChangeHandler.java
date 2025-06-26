@@ -14,12 +14,11 @@ public class ChangeHandler extends AbstractHandler {
     public BaseResponse handle(BaseRequest baseRequest) {
         try {
             super.bookCatalogDao.update(BookConvertor.convert(baseRequest.getBook()));
+            return BaseResponse.success();
         } catch (Exception e) {
             e.printStackTrace();
-
+            return BaseResponse.fail(e.getMessage());
         }
-
-        return null;
     }
 
     public Action getAction() {

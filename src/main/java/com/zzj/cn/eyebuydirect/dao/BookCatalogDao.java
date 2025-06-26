@@ -98,12 +98,12 @@ public class BookCatalogDao {
         return returnBookDtos;
     }
 
-    public void delete(String name) {
-        if (StringUtils.isEmpty(name)) {
+    public void delete(String bookName) {
+        if (StringUtils.isEmpty(bookName)) {
             return;
         }
         for (BookDto bookDto : bookDtos) {
-            if (bookDto.getName().equals(name)) {
+            if (bookDto.getName().equals(bookName)) {
                 bookDtos.remove(bookDto);
             }
         }
