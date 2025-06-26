@@ -1,13 +1,14 @@
 package com.zzj.cn.eyebuydirect.controller;
 
-import com.zzj.cn.eyebuydirect.entity.Book;
-import com.zzj.cn.eyebuydirect.service.BookCatalogService;
-import com.zzj.cn.eyebuydirect.vo.BookVo;
+import com.zzj.cn.eyebuydirect.enums.Action;
+import com.zzj.cn.eyebuydirect.request.BaseRequest;
+import com.zzj.cn.eyebuydirect.response.BaseResponse;
+import com.zzj.cn.eyebuydirect.service.HandlerRouter;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
@@ -15,27 +16,27 @@ import java.util.List;
 public class BookCatalogController {
 
     @Resource
-    private BookCatalogService bookCatalogService;
+    private HandlerRouter handlerRouter;
 
 
     @PostMapping("/create")
-    public void create(@RequestBody Book book) {
-        bookCatalogService.insert(book);
+    public BaseResponse create(@RequestBody BaseRequest baseRequest) {
+        return handlerRouter.route(Action.CREATE, baseRequest);
     }
 
-    @GetMapping("/query/{catalog}")
-    public List<BookVo> query(@PathVariable("catalog") String catalog) {
-        return bookCatalogService.query(catalog);
+    @PostMapping("/query")
+    public BaseResponse query(@RequestBody BaseRequest baseRequest) {
+        return handlerRouter.route(Action.QUERY, baseRequest);
     }
 
-    @PostMapping("/update")
-    public void update(@RequestBody Book book) {
-        bookCatalogService.update(book);
+    @PostMapping("/change")
+    public BaseResponse update(@RequestBody BaseRequest baseRequest) {
+        return handlerRouter.route(Action.CHANGE, baseRequest);
     }
 
-    @GetMapping("/delete")
-    public void delete() {
-        bookCatalogService.delete();
+    @PostMapping("/remove")
+    public BaseResponse delete(@RequestBody BaseRequest baseRequest) {
+        return handlerRouter.route(Action.REMOVE, baseRequest);
     }
 
 }
