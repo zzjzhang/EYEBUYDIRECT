@@ -25,6 +25,7 @@ public class BookConvertor {
         bookDto.setIsbn(book.getIsbn());
         bookDto.setPublisher(book.getPublisher());
         bookDto.setCatalog(book.getCatalog().getName());
+        return bookDto;
     }
 
     public static List<BookVo> convert(List<BookDto> bookDtos) {

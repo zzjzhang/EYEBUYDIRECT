@@ -1,6 +1,6 @@
 package com.zzj.cn.eyebuydirect.handler;
 
-import com.zzj.cn.eyebuydirect.dto.BookDto;
+import com.zzj.cn.eyebuydirect.converter.BookConvertor;
 import com.zzj.cn.eyebuydirect.enums.Action;
 import com.zzj.cn.eyebuydirect.request.BaseRequest;
 import com.zzj.cn.eyebuydirect.response.BaseResponse;
@@ -12,8 +12,13 @@ public class ChangeHandler extends AbstractHandler {
 
     @Override
     public BaseResponse handle(BaseRequest baseRequest) {
-        BookDto bookDto = null;
-        super.bookCatalogDao.update(bookDto);
+        try {
+            super.bookCatalogDao.update(BookConvertor.convert(baseRequest.getBook()));
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
         return null;
     }
 
