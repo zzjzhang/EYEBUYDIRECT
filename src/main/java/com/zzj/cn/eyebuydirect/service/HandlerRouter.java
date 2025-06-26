@@ -4,9 +4,12 @@ import com.zzj.cn.eyebuydirect.enums.Action;
 import com.zzj.cn.eyebuydirect.handler.*;
 import com.zzj.cn.eyebuydirect.request.BaseRequest;
 import com.zzj.cn.eyebuydirect.response.BaseResponse;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,11 +18,14 @@ public class HandlerRouter {
 
     private static final Map<Action, AbstractHandler> HANDLER_MAP = new HashMap<>();
 
-    static {
-        HANDLER_MAP.put(Action.CREATE, new CreateHandler());
-        HANDLER_MAP.put(Action.REMOVE, new RemoveHandler());
-        HANDLER_MAP.put(Action.CHANGE, new ChangeHandler());
-        HANDLER_MAP.put(Action.QUERY, new QueryHandler());
+    @Resource
+    private List<AbstractHandler> handlers;
+
+    @PostConstruct
+    void init() {
+        for (AbstractHandler handler : handlers) {
+            HANDLER_MAP.put(handler.getAction(), handler);
+        }
     }
 
     public BaseResponse route(Action action, BaseRequest baseRequest) {
