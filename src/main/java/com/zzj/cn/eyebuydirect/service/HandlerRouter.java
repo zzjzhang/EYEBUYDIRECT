@@ -14,11 +14,11 @@ import java.util.Map;
 @Component
 public class HandlerRouter {
 
-    private static final Map<Action, AbstractHandler> HANDLER_MAP = new HashMap<>();
+    public static final Map<Action, AbstractHandler> HANDLER_MAP = new HashMap<>();
 
 
     @PostConstruct
-    void init() {
+    public void init() {
         HANDLER_MAP.put(Action.CREATE, new CreateHandler());
         HANDLER_MAP.put(Action.CHANGE, new ChangeHandler());
         HANDLER_MAP.put(Action.REMOVE, new RemoveHandler());

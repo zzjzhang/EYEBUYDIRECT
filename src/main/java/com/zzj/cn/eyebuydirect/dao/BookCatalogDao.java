@@ -26,7 +26,7 @@ public class BookCatalogDao {
 
 
     @PostConstruct
-    void init() {
+    public void init() {
         initBook();
         initCatalog();
     }

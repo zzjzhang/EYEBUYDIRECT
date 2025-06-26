@@ -21,4 +21,13 @@ public abstract class AbstractHandler {
 
     abstract void setAction(Action action);
 
+
+    public BookCatalogDao getBookCatalogDao() {
+        return bookCatalogDao;
+    }
+
+    public void setBookCatalogDao(BookCatalogDao bookCatalogDao) {
+        this.bookCatalogDao = bookCatalogDao;
+    }
+
 }

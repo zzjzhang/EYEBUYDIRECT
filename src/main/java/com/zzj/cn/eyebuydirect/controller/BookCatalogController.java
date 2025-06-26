@@ -28,19 +28,21 @@ public class BookCatalogController {
     }
 
     @PostMapping("/change")
-    public BaseResponse update(@RequestBody BaseRequest baseRequest) {
+    public BaseResponse change(@RequestBody BaseRequest baseRequest) {
         return handlerRouter.route(Action.CHANGE, baseRequest);
     }
 
     @PostMapping("/remove")
-    public BaseResponse delete(@RequestBody BaseRequest baseRequest) {
+    public BaseResponse remove(@RequestBody BaseRequest baseRequest) {
         return handlerRouter.route(Action.REMOVE, baseRequest);
     }
 
 
-    @GetMapping("heart-beat")
-    public BaseResponse heartBeat() {
-        return new BaseResponse();
+    public HandlerRouter getHandlerRouter() {
+        return handlerRouter;
     }
 
+    public void setHandlerRouter(HandlerRouter handlerRouter) {
+        this.handlerRouter = handlerRouter;
+    }
 }
