@@ -2,8 +2,8 @@ package com.zzj.cn.eyebuydirect.handler;
 
 import com.zzj.cn.eyebuydirect.dto.BookDto;
 import com.zzj.cn.eyebuydirect.enums.Action;
-import com.zzj.cn.eyebuydirect.request.BaseRequest;
-import com.zzj.cn.eyebuydirect.response.BaseResponse;
+import com.zzj.cn.eyebuydirect.request.OpenRequest;
+import com.zzj.cn.eyebuydirect.response.OpenResponse;
 
 import java.util.List;
 
@@ -14,13 +14,13 @@ public class QueryHandler extends AbstractHandler {
 
 
     @Override
-    public BaseResponse handle(BaseRequest baseRequest) {
+    public OpenResponse handle(OpenRequest openRequest) {
         try {
-            List<BookDto> bookDtos = super.bookCatalogDao.query(baseRequest.getBook().getCatalog().getName());
-            return BaseResponse.success(bookDtos);
+            List<BookDto> bookDtos = super.bookCatalogDao.query(openRequest.getBook().getCatalog().getName());
+            return OpenResponse.success(bookDtos);
         } catch (Exception e) {
             e.printStackTrace();
-            return BaseResponse.fail(e.getMessage());
+            return OpenResponse.fail(e.getMessage());
         }
     }
 

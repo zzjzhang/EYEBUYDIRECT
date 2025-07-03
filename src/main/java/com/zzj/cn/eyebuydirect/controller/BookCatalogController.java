@@ -1,8 +1,8 @@
 package com.zzj.cn.eyebuydirect.controller;
 
 import com.zzj.cn.eyebuydirect.enums.Action;
-import com.zzj.cn.eyebuydirect.request.BaseRequest;
-import com.zzj.cn.eyebuydirect.response.BaseResponse;
+import com.zzj.cn.eyebuydirect.request.OpenRequest;
+import com.zzj.cn.eyebuydirect.response.OpenResponse;
 import com.zzj.cn.eyebuydirect.service.HandlerRouter;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,23 +18,23 @@ public class BookCatalogController {
 
 
     @PostMapping("create")
-    public BaseResponse create(@RequestBody BaseRequest baseRequest) {
-        return handlerRouter.route(Action.CREATE, baseRequest);
+    public OpenResponse create(@RequestBody OpenRequest openRequest) {
+        return handlerRouter.route(Action.CREATE, openRequest);
     }
 
     @PostMapping("/query")
-    public BaseResponse query(@RequestBody BaseRequest baseRequest) {
-        return handlerRouter.route(Action.QUERY, baseRequest);
+    public OpenResponse query(@RequestBody OpenRequest openRequest) {
+        return handlerRouter.route(Action.QUERY, openRequest);
     }
 
     @PostMapping("/change")
-    public BaseResponse change(@RequestBody BaseRequest baseRequest) {
-        return handlerRouter.route(Action.CHANGE, baseRequest);
+    public OpenResponse change(@RequestBody OpenRequest openRequest) {
+        return handlerRouter.route(Action.CHANGE, openRequest);
     }
 
     @PostMapping("/remove")
-    public BaseResponse remove(@RequestBody BaseRequest baseRequest) {
-        return handlerRouter.route(Action.REMOVE, baseRequest);
+    public OpenResponse remove(@RequestBody OpenRequest openRequest) {
+        return handlerRouter.route(Action.REMOVE, openRequest);
     }
 
 

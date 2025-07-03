@@ -2,8 +2,8 @@ package com.zzj.cn.eyebuydirect.handler;
 
 import com.zzj.cn.eyebuydirect.converter.BookConvertor;
 import com.zzj.cn.eyebuydirect.enums.Action;
-import com.zzj.cn.eyebuydirect.request.BaseRequest;
-import com.zzj.cn.eyebuydirect.response.BaseResponse;
+import com.zzj.cn.eyebuydirect.request.OpenRequest;
+import com.zzj.cn.eyebuydirect.response.OpenResponse;
 
 
 public class CreateHandler extends AbstractHandler {
@@ -11,13 +11,13 @@ public class CreateHandler extends AbstractHandler {
     private Action action = Action.CREATE;
 
     @Override
-    public BaseResponse handle(BaseRequest baseRequest) {
+    public OpenResponse handle(OpenRequest openRequest) {
         try {
-            super.bookCatalogDao.insert(BookConvertor.convert(baseRequest.getBook()));
-            return BaseResponse.success();
+            super.bookCatalogDao.insert(BookConvertor.convert(openRequest.getBook()));
+            return OpenResponse.success();
         } catch (Exception e) {
             e.printStackTrace();
-            return BaseResponse.fail(e.getMessage());
+            return OpenResponse.fail(e.getMessage());
         }
     }
 

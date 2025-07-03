@@ -3,7 +3,7 @@ package com.zzj.cn.eyebuydirect.request;
 
 import com.zzj.cn.eyebuydirect.entity.Book;
 
-public class BaseRequest {
+public class OpenRequest {
 
     private String requestId;
     private Book book;

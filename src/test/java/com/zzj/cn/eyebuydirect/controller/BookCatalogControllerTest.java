@@ -4,7 +4,7 @@ import com.zzj.cn.eyebuydirect.dao.BookCatalogDao;
 import com.zzj.cn.eyebuydirect.entity.Book;
 import com.zzj.cn.eyebuydirect.entity.Catalog;
 import com.zzj.cn.eyebuydirect.enums.Action;
-import com.zzj.cn.eyebuydirect.request.BaseRequest;
+import com.zzj.cn.eyebuydirect.request.OpenRequest;
 import com.zzj.cn.eyebuydirect.service.HandlerRouter;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,28 +42,28 @@ public class BookCatalogControllerTest {
         book.setIsbn("isbn");
         book.setPublisher("publisher");
         book.setCatalog(catalog);
-        BaseRequest baseRequest = new BaseRequest();
-        baseRequest.setRequestId("requestId");
-        baseRequest.setBook(book);
-        bookCatalogController.create(baseRequest);
+        OpenRequest openRequest = new OpenRequest();
+        openRequest.setRequestId("requestId");
+        openRequest.setBook(book);
+        bookCatalogController.create(openRequest);
     }
 
     @Test
     public void testQuery() {
-        BaseRequest baseRequest = new BaseRequest();
-        baseRequest.setRequestId("requestId");
+        OpenRequest openRequest = new OpenRequest();
+        openRequest.setRequestId("requestId");
         Catalog catalog = new Catalog();
         catalog.setName("IT");
         Book book = new Book();
         book.setCatalog(catalog);
-        baseRequest.setBook(book);
-        bookCatalogController.query(baseRequest);
+        openRequest.setBook(book);
+        bookCatalogController.query(openRequest);
     }
 
     @Test
     public void testChange() {
-        BaseRequest baseRequest = new BaseRequest();
-        baseRequest.setRequestId("requestId");
+        OpenRequest openRequest = new OpenRequest();
+        openRequest.setRequestId("requestId");
         Catalog catalog = new Catalog();
         catalog.setName("IT");
         Book book = new Book();
@@ -72,14 +72,14 @@ public class BookCatalogControllerTest {
         book.setIsbn("isbn");
         book.setPublisher("publisher");
         book.setCatalog(catalog);
-        baseRequest.setBook(book);
-        bookCatalogController.change(baseRequest);
+        openRequest.setBook(book);
+        bookCatalogController.change(openRequest);
     }
 
     @Test
     public void testRemove() {
-        BaseRequest baseRequest = new BaseRequest();
-        baseRequest.setRequestId("requestId");
+        OpenRequest openRequest = new OpenRequest();
+        openRequest.setRequestId("requestId");
         Catalog catalog = new Catalog();
         catalog.setName("IT");
         Book book = new Book();
@@ -88,8 +88,8 @@ public class BookCatalogControllerTest {
         book.setIsbn("isbn");
         book.setPublisher("publisher");
         book.setCatalog(catalog);
-        baseRequest.setBook(book);
-        bookCatalogController.remove(baseRequest);
+        openRequest.setBook(book);
+        bookCatalogController.remove(openRequest);
     }
 
 }
